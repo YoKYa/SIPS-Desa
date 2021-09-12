@@ -1,20 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
+
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-11">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
+                <div class="shadow card-body">
                     @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
                     @endif
-
-                    {{ __('You are logged in!') }}
+                    <div class="m-1 d-flex">
+                        @include('layouts.sidebar')
+                        <div class="m-1 rounded shadow-sm col-md-9">B</div>
+                    </div>
                 </div>
             </div>
         </div>
