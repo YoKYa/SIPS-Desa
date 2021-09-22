@@ -41,4 +41,28 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function suratsktm()
+    {
+        return $this->hasMany(SuratSktm::class);
+    }
+    public function suratskd()
+    {
+        return $this->hasMany(SuratSkd::class);
+    }
+    public function suratskpp()
+    {
+        return $this->hasMany(SuratSkp::class);
+    }
+    public function latestsktm()
+    {
+        return $this->hasOne(SuratSktm::class)->latest();
+    }
+    public function latestskd()
+    {
+        return $this->hasOne(SuratSkd::class)->latest();
+    }
+    public function latestskpp()
+    {
+        return $this->hasOne(SuratSkp::class)->latest();
+    }
 }
