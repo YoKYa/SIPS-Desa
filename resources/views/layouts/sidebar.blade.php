@@ -6,7 +6,7 @@
             </li>
             @if (auth()->user()->status == 'User')
             <li class="mt-5">
-                <a href="{{ Route('home') }}" class="nav-link active d-flex">
+                <a href="{{ Route('home') }}" class="nav-link @if(Request::is('/'))) active @endif d-flex">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                         class="mx-2 bi me-2 d-flex align-items-center" width="20" height="20">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -16,7 +16,7 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="m-1 nav-link d-flex align-items-center ">
+                <a href="{{ Route('surat.masuk') }}" class="m-1 nav-link d-flex @if(Request::is('surat/masuk'))) active @endif">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                         class="mx-2 bi me-2 d-flex align-items-center" width="20" height="20">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -26,7 +26,7 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="m-1 nav-link d-flex align-items-center">
+                <a href="{{ Route('riwayat.surat') }}" class="m-1 nav-link d-flex align-items-center @if(Request::is('surat/riwayat'))) active @endif">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                         class="mx-2 bi me-2 d-flex align-items-center" width="20" height="20">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -47,7 +47,7 @@
             </li>
             @else
             <li class="mt-5">
-                <a href="{{ Route('home') }}" class="nav-link active d-flex">
+                <a href="{{ Route('home') }}" class="nav-link d-flex @if(Request::is('/'))) active @endif">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                         class="mx-2 bi me-2 d-flex align-items-center" width="20" height="20">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -57,17 +57,17 @@
                 </a>
             </li>
             <li class="mt-2">
-                <a href="{{ Route('home') }}" class="nav-link d-flex">
+                <a href="{{ Route('surat') }}" class="nav-link d-flex @if(Request::is('surat'))) active @endif">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                         class="mx-2 bi me-2 d-flex align-items-center" width="20" height="20">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M8 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-2m-4-1v8m0 0l3-3m-3 3L9 8m-5 5h2.586a1 1 0 01.707.293l2.414 2.414a1 1 0 00.707.293h3.172a1 1 0 00.707-.293l2.414-2.414a1 1 0 01.707-.293H20" />
                     </svg>
-                    <div class=" font-weight-bold" style="font-size:16px">Pemesanan Surat</div>
+                    <div class="font-weight-bold" style="font-size:16px">Pemesanan Surat</div>
                 </a>
             </li>
             <li class="mt-2">
-                <a href="{{ Route('home') }}" class="nav-link d-flex">
+                <a href="{{ Route('surat.keluar') }}" class="nav-link d-flex @if(Request::is('surat/sk'))) active @endif">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                         class="mx-2 bi me-2 d-flex align-items-center" width="20" height="20">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

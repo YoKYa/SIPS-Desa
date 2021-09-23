@@ -22,7 +22,8 @@ class CreateSuratSktmsTable extends Migration
             $table->string('statuspernikahan');
             $table->string('alamat');
             $table->string('keterangan')->nullable();
-            $table->enum('status',['Ajukan','Diterima','Ditolak'])->default('Ajukan');
+            $table->enum('status', ['Ajukan', 'Diterima', 'Ditolak'])->default('Ajukan');
+            $table->string('file')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
         });
