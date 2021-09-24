@@ -60,6 +60,9 @@ Route::middleware(['auth'])->group(function () {
     // APBD
     Route::prefix('apbd')->group(function()
     {
-        Route::get('apbd', [APBDController::class, 'index'])->name('apbd');
+        Route::get('/', [APBDController::class, 'index'])->name('apbd');
+        Route::post('/', [APBDController::class, 'apbd']);
+        Route::post('/add', [APBDController::class, 'add'])->name('tambahapbd');
+        Route::delete('/del', [APBDController::class, 'delete'])->name('apbd.del');
     });
 });

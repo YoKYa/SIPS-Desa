@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Apbd extends Model
 {
     use HasFactory;
+    protected $table = 'apbd';
+    protected $guarded = [];
 }

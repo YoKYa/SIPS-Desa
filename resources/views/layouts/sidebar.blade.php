@@ -36,7 +36,7 @@
                 </a>
             </li>
             <li>
-                <a href="#" class="m-1 nav-link d-flex align-items-center">
+                <a href="{{ Route('apbd') }}" class="m-1 nav-link d-flex align-items-center @if(Request::is('apbd'))) active @endif">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                         class="mx-2 bi me-2 d-flex align-items-center" width="20" height="20">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -77,7 +77,7 @@
                 </a>
             </li>
             <li class="mt-2">
-                <a href="{{ Route('home') }}" class="nav-link d-flex">
+                <a href="{{ Route('apbd') }}" class="nav-link d-flex @if(Request::is('apbd'))) active @endif">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
                         class="mx-2 bi me-2 d-flex align-items-center" width="20" height="20">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

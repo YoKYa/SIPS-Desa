@@ -15,6 +15,13 @@ class CreateApbdsTable extends Migration
     {
         Schema::create('apbd', function (Blueprint $table) {
             $table->id();
+            $table->string('kode_rekening_1')->nullable();
+            $table->string('kode_rekening_2')->nullable();
+            $table->string('uraian')->nullable();
+            $table->unsignedBigInteger('anggaran')->nullable();
+            $table->string('sumber')->nullable();
+            $table->year('tahun');
+            $table->enum('jenis', ['Pendapatan','Belanja']);
             $table->timestamps();
         });
     }
