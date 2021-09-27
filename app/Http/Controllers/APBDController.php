@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Apbd;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class APBDController extends Controller
 {
@@ -33,7 +34,7 @@ class APBDController extends Controller
             'jenis' => 'required',
         ]);
         Apbd::create($data);
-        return back()->with('status', 'Berhasil Menambah Data APBD');
+        return Redirect()->to(Route('apbd'))->with('status', 'Berhasil Menambah Data APBD');
     }
     public function delete(Request $request)
     {

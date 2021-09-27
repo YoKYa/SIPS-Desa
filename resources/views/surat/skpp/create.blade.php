@@ -168,7 +168,7 @@
                                         </div>
                                         @enderror
                                     </div>
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label for="keterangan">Keterangan</label>
                                         <textarea name="keterangan" required id="keterangan"
                                             class="form-control"></textarea>
@@ -178,7 +178,7 @@
                                             {{ $message }}
                                         </div>
                                         @enderror
-                                    </div>
+                                    </div> --}}
                                     <div class="m-2 d-flex">
                                         <button type="submit" class="m-2 btn btn-primary">Submit</button>
                                         <a href="{{ Route('home') }}" class="m-2 btn btn-danger">Kembali</a>

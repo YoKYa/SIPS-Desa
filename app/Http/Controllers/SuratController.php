@@ -101,7 +101,7 @@ class SuratController extends Controller
             'alamat_pindah_kecamatan' => 'required',
             'alamat_pindah_kabupaten' => 'required',
             'alamat_pindah_provinsi' => 'required',
-            'keterangan' => 'required',
+            // 'keterangan' => 'required',
         ]);
         $data = Auth::user()->suratskpp()->create($data);
         return redirect()->to(Route('home'))->with('success', 'Berhasil Mengajukan Surat');

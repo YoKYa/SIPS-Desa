@@ -1,3 +1,4 @@
+{{-- {{ dd(Request::is('surat/sk')) }} --}}
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -56,8 +57,7 @@
                                 {{ auth()->user()->name }}
                                 @endauth
                                 @guest
-                                <img src="../assets/images/users/profile.png" alt="user" class="rounded-circle"
-                                    width="31">
+                                MENU
                                 @endguest
 
                             </a>
@@ -71,9 +71,13 @@
                                         class="mdi-login mdi m-r-5 m-l-5"></i>
                                     Register</a>
                                 @else
-                                <a class="dropdown-item" href="javascript:void(0)"><i
-                                        class="mdi mdi-login-variant m-r-5 m-l-5"></i>
-                                    Login</a>
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                                         document.getElementById('logout-form').submit();"><i class="mdi mdi-logout m-r-5 m-l-5"></i>
+                                    Logout</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
                                 @endguest
                             </ul>
                         </li>
@@ -89,39 +93,39 @@
                     <ul id="sidebarnav" class="in">
                         @guest
                         <li class="sidebar-item @if(Request::is('/login')) selected @endif">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link active" href="{{ Route('login') }}"
-                                aria-expanded="false"><i class="mdi mdi-login"></i><span
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link active"
+                                href="{{ Route('login') }}" aria-expanded="false"><i class="mdi mdi-login"></i><span
                                     class="hide-menu">Login</span></a></li>
-                                    <li class="sidebar-item @if(Request::is('/register')) selected @endif">
-                                        <a class="sidebar-link waves-effect waves-dark sidebar-link active" href="{{ Route('register') }}"
-                                            aria-expanded="false"><i class="mdi mdi-login-variant"></i><span
-                                                class="hide-menu">Register</span></a></li>
+                        <li class="sidebar-item @if(Request::is('/register')) selected @endif">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link active"
+                                href="{{ Route('register') }}" aria-expanded="false"><i
+                                    class="mdi mdi-login-variant"></i><span class="hide-menu">Register</span></a></li>
                         @endguest
                         @auth
                         <li class="sidebar-item @if(Request::is('/')) selected @endif">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link active" href="{{ Route('home') }}"
-                                aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
-                                    class="hide-menu">Dashboard</span></a></li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="pages-profile.html"
-                                aria-expanded="false"><i class="mdi mdi-account-network"></i><span
-                                    class="hide-menu">Profile</span></a>
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link @if(Request::is('/')) active @endif"
+                                href="{{ Route('home') }}" aria-expanded="false"><i
+                                    class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
+                        <li class="sidebar-item @if(Request::is('surat')) selected @endif">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link @if(Request::is('surat')) active @endif"
+                                href="{{ Route('surat') }}" aria-expanded="false"><i class="mdi mdi-email"></i><span
+                                    class="hide-menu">Pemesanan Surat</span></a>
                         </li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="table-basic.html" aria-expanded="false"><i class="mdi mdi-border-all"></i><span
-                                    class="hide-menu">Table</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="icon-material.html" aria-expanded="false"><i class="mdi mdi-face"></i><span
-                                    class="hide-menu">Icon</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="starter-kit.html" aria-expanded="false"><i class="mdi mdi-file"></i><span
-                                    class="hide-menu">Blank</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="error-404.html" aria-expanded="false"><i class="mdi mdi-alert-outline"></i><span
-                                    class="hide-menu">404</span></a></li>
+                        <li class="sidebar-item @if(Request::is('surat/sk')) selected @endif">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link @if(Request::is('surat/sk')) active @endif"
+                                href="{{ Route('surat.keluar') }}" aria-expanded="false"><i
+                                    class="mdi mdi-email-open"></i><span class="hide-menu">Surat Keluar</span></a>
+                        </li>
+                        <li class="sidebar-item @if(Request::is('apbd')) selected @endif">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link @if(Request::is('apbd')) active @endif"
+                                href="{{ Route('apbd') }}" aria-expanded="false"><i
+                                    class="mdi mdi-email-open"></i><span class="hide-menu">APBD</span></a>
+                        </li>
                         <li class="text-center p-40 upgrade-btn">
-                            <a href="https://www.wrappixel.com/templates/flexy-bootstrap-admin-template/"
-                                class="btn d-block w-100 btn-danger text-white" target="_blank">Upgrade to Pro</a>
+                            <a class="btn d-block w-100 btn-danger text-white" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                                         document.getElementById('logout-form').submit();"><i class="mdi mdi-logout m-r-5 m-l-5"></i>
+                                Logout</a>
                         </li>
                         @endauth
                     </ul>
@@ -139,6 +143,11 @@
                     </div>
                 </div>
             </div>
+            @if (session('status'))
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div>
+            @endif
             <div class="container-fluid">
                 @yield('content')
             </div>

@@ -30,7 +30,6 @@ class CreateSuratSkpsTable extends Migration
             $table->string('alamat_pindah_kecamatan')->nullable();
             $table->string('alamat_pindah_kabupaten')->nullable();
             $table->string('alamat_pindah_provinsi')->nullable();
-            $table->string('keterangan')->nullable();
             $table->enum('status',['Ajukan','Diterima','Ditolak'])->default('Ajukan');
             $table->string('file')->nullable();
             $table->foreign('user_id')->references('id')->on('users');

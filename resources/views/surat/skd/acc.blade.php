@@ -1,49 +1,39 @@
 @extends('layouts.app')
+@section('title', 'Terima Pengajuan SKD')
 @section('content')
-<div class="container-fluid">
-    <div class="row justify-content-center">
-        <div class="col-md-11">
-            <div class="card">
-                <div class="shadow card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-                    <div class="m-1 d-flex">
-                        @include('layouts.sidebar')
-                        <div class="m-1 rounded shadow-sm col-md-9">
-                            <div class="mt-3 ">
-                                <h3>Surat Keterangan Domisili</h3>
-                                <hr>
-                            </div>
-                            <div>
-                                <h5>Pembuat : {{ $data->user->name }}</h5>
-                                <h5>NIK : {{ $data->user->username }}</h5>
-                                <hr>
-                                <div class="d-flex flex-column">
-                                    <div class="">
-                                        <a href=""><b>Download / Cetak Surat</b></a>
-                                    </div>
-                                    <hr>
-                                    <div>
-                                        <form method="post" enctype="multipart/form-data" action="{{ Route('skd.acc', $data->id) }}">
-                                            @csrf
-                                            <div class="form-group">
-                                                <input type="file" class="form-control" name="file">
-                                            </div>
-                                            <button type="submit" class="btn btn-primary">Upload</button>
-                                            <br>
-                                            <small>Setelah Upload, Pengajuan secara otomatis telah disetujui</small>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<div class="card">
+    <div class="card-body">
+        <center class="m-t-30"> 
+            <h4 class="card-title m-t-10">Pembuat</h4>
+            <h4 class="card-subtitle">{{ $data->user->name }}</h4>
+            <div class="row text-center justify-content-md-center">
+                <div class="col-12"><a href="javascript:void(0)" class="link"><i class="icon-people"></i>
+                        <font class="font-medium">{{ $data->user->username }}</font>
+                    </a>
                 </div>
+            </div>
+        </center>
+    </div>
+        <hr>
+    <div class="card-body"> 
+        <div class="d-flex flex-column">
+            <div class="">
+                <a href=""><b>Download / Cetak Surat</b></a>
+            </div>
+            <hr>
+            <div>
+                <form method="post" enctype="multipart/form-data" action="{{ Route('skd.acc', $data->id) }}">
+                    @csrf
+                    <div class="form-group">
+                        <input type="file" class="form-control" name="file">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                    <br>
+                    <small>Setelah Upload, Pengajuan secara otomatis telah disetujui</small>
+                </form>
             </div>
         </div>
     </div>
 </div>
+<a href="{{ URL::previous() }}" class="mdi mdi-backburger"><b>KEMBALI</b></a>
 @endsection
