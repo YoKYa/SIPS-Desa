@@ -118,20 +118,20 @@
                                     class="mdi mdi-email-open"></i><span class="hide-menu">Surat Keluar</span></a>
                         </li>
                         @else
-                        <li class="sidebar-item @if(Request::is('surat')) selected @endif">
+                        <li class="sidebar-item @if(Request::is('surat/masuk')) selected @endif">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link @if(Request::is('surat.masuk')) active @endif"
-                                href="{{ Route('surat') }}" aria-expanded="false"><i class="mdi mdi-email"></i><span
+                                href="{{ Route('surat.masuk') }}" aria-expanded="false"><i class="mdi mdi-email"></i><span
                                     class="hide-menu">Surat Masuk</span></a>
                         </li>
-                        <li class="sidebar-item @if(Request::is('surat/sk')) selected @endif">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link @if(Request::is('surat/sk')) active @endif"
-                                href="{{ Route('surat.keluar') }}" aria-expanded="false"><i
+                        <li class="sidebar-item @if(Request::is('surat/riwayat')) selected @endif">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link @if(Request::is('riwayat.surat')) active @endif"
+                                href="{{ Route('riwayat.surat') }}" aria-expanded="false"><i
                                     class="mdi mdi-email-open"></i><span class="hide-menu">Riwayat Surat</span></a>
                         </li>
                         @endif
                         <li class="sidebar-item @if(Request::is('apbd')) selected @endif">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link @if(Request::is('apbd')) active @endif"
-                                href="{{ Route('apbd') }}" aria-expanded="false"><i class="mdi mdi-email-open"></i><span
+                                href="{{ Route('apbd') }}" aria-expanded="false"><i class="mdi mdi-bulletin-board"></i><span
                                     class="hide-menu">APBD</span></a>
                         </li>
                         <li class="text-center p-40 upgrade-btn">

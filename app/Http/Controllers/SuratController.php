@@ -23,7 +23,7 @@ class SuratController extends Controller
         $sktm = auth()->user()->suratsktm;
         $skd = auth()->user()->suratskd;
         $skpp = auth()->user()->suratskpp;
-        return view('surat.masuk.index', compact('sktm','skd','skpp'));
+        return view('surat.masuk.riwayat', compact('sktm','skd','skpp'));
     }
     public function sktm()
     {
