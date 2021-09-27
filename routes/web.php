@@ -16,6 +16,7 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('surat')->group(function () {
         Route::get('masuk', [SuratController::class, 'suratmasuk'])->name('surat.masuk');
         Route::get('riwayat', [SuratController::class, 'riwayatsurat'])->name('riwayat.surat');
+        Route::get('pengajuan',[SuratController::class, 'pengajuan'])->name('surat.pengajuan');
         // SKTM
         Route::get('/sktm/create', [SuratController::class, 'sktm'])->name('create.surat.sktm');
         Route::post('/sktm/create', [SuratController::class, 'store']);
@@ -37,8 +38,11 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('/sk', [SuratController::class, 'indexk'])->name('surat.keluar');
         Route::get('/sk/sktm', [SuratController::class, 'skshowsktm'])->name('surat.keluar.sktm');
+        Route::post('/sk/sktm', [SuratController::class, 'skshowsktmsearch']);
         Route::get('/sk/skd', [SuratController::class, 'skshowskd'])->name('surat.keluar.skd');
+        Route::post('/sk/skd', [SuratController::class, 'skshowskdsearch']);
         Route::get('/sk/skpp', [SuratController::class, 'skshowskpp'])->name('surat.keluar.skpp');
+        Route::post('/sk/skpp', [SuratController::class, 'skshowskppsearch']);
 
         // Accept Surat
         // SKTM

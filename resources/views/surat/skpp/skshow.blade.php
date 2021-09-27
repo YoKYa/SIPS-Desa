@@ -4,6 +4,13 @@
 <div class="col-12">
     <div class="card">
         <div class="card-body">
+            <form class="w-100 me-3" method="POST" action="{{ Route('surat.keluar.skpp') }}">
+                @csrf
+                <input type="search" name="search" class="form-control" placeholder="Search..." aria-label="Search">
+                <small>Enter untuk mencari</small>
+            </form> 
+        </div>
+        <div class="card-body">
             <h4 class="card-title">Surat Keterangan Pindah Penduduk</h4>
             <h6 class="card-subtitle">Daftar Surat-surat Keluar</h6>
         </div>

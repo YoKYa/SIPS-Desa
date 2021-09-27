@@ -1,4 +1,4 @@
-{{-- {{ dd(Request::is('surat/sk')) }} --}}
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -26,126 +26,11 @@
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
         data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
         <header class="topbar" data-navbarbg="skin6">
-            <nav class="navbar top-navbar navbar-expand-md navbar-light">
-                <div class="navbar-header" data-logobg="skin6">
-                    {{-- Logo --}}
-                    <a class="navbar-brand" href="{{ Route('home') }}">
-                        {{-- Logo Icon --}}
-                        <b class="logo-icon">
-                            <img src="{{ asset('assets/img/logo/logo.png') }}" alt="" height="30" class="mx-2">
-                        </b>
-                        {{-- Logo Text --}}
-                        <span class="logo-text">
-                            {{ config('app.name', 'Laravel') }}
-                        </span>
-                    </a>
-                    {{-- Sidebar toogle Mobile --}}
-                    <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i
-                            class="ti-menu ti-close"></i></a>
-                </div>
-                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
-                    <ul class="navbar-nav float-start me-auto">
-                        <li class="nav-item search-box"> <a class="nav-link waves-effect waves-dark"
-                                href="javascript:void(0)">SISTEM INFORMASI PEMBUATAN SURAT DESA SANGGRAHAN</a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav float-end">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#"
-                                id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                @auth
-                                {{ auth()->user()->name }}
-                                @endauth
-                                @guest
-                                MENU
-                                @endguest
-
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end user-dd animated"
-                                aria-labelledby="navbarDropdown">
-                                @guest
-                                <a class="dropdown-item" href="{{ Route('login') }}"><i
-                                        class="mdi mdi-login-variant m-r-5 m-l-5"></i>
-                                    Login</a>
-                                <a class="dropdown-item" href="{{ Route('register') }}"><i
-                                        class="mdi-login mdi m-r-5 m-l-5"></i>
-                                    Register</a>
-                                @else
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                                         document.getElementById('logout-form').submit();"><i class="mdi mdi-logout m-r-5 m-l-5"></i>
-                                    Logout</a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                                @endguest
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+            <x-navigation/>
         </header>
         <aside class="left-sidebar" data-sidebarbg="skin6">
             {{-- Sidbar Scroll --}}
-            <div class="scroll-sidebar">
-                {{-- Sidebar Navigation --}}
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav" class="in">
-                        @guest
-                        <li class="sidebar-item @if(Request::is('/login')) selected @endif">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link active"
-                                href="{{ Route('login') }}" aria-expanded="false"><i class="mdi mdi-login"></i><span
-                                    class="hide-menu">Login</span></a></li>
-                        <li class="sidebar-item @if(Request::is('/register')) selected @endif">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link active"
-                                href="{{ Route('register') }}" aria-expanded="false"><i
-                                    class="mdi mdi-login-variant"></i><span class="hide-menu">Register</span></a></li>
-                        @endguest
-                        @auth
-                        <li class="sidebar-item @if(Request::is('/')) selected @endif">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link @if(Request::is('/')) active @endif"
-                                href="{{ Route('home') }}" aria-expanded="false"><i
-                                    class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
-                        @if (auth()->user()->status == 'Admin')
-                        <li class="sidebar-item @if(Request::is('surat')) selected @endif">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link @if(Request::is('surat')) active @endif"
-                                href="{{ Route('surat') }}" aria-expanded="false"><i class="mdi mdi-email"></i><span
-                                    class="hide-menu">Pemesanan Surat</span></a>
-                        </li>
-                        <li class="sidebar-item @if(Request::is('surat/sk')) selected @endif">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link @if(Request::is('surat/sk')) active @endif"
-                                href="{{ Route('surat.keluar') }}" aria-expanded="false"><i
-                                    class="mdi mdi-email-open"></i><span class="hide-menu">Surat Keluar</span></a>
-                        </li>
-                        @else
-                        <li class="sidebar-item @if(Request::is('surat/masuk')) selected @endif">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link @if(Request::is('surat.masuk')) active @endif"
-                                href="{{ Route('surat.masuk') }}" aria-expanded="false"><i class="mdi mdi-email"></i><span
-                                    class="hide-menu">Surat Masuk</span></a>
-                        </li>
-                        <li class="sidebar-item @if(Request::is('surat/riwayat')) selected @endif">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link @if(Request::is('riwayat.surat')) active @endif"
-                                href="{{ Route('riwayat.surat') }}" aria-expanded="false"><i
-                                    class="mdi mdi-email-open"></i><span class="hide-menu">Riwayat Surat</span></a>
-                        </li>
-                        @endif
-                        <li class="sidebar-item @if(Request::is('apbd')) selected @endif">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link @if(Request::is('apbd')) active @endif"
-                                href="{{ Route('apbd') }}" aria-expanded="false"><i class="mdi mdi-bulletin-board"></i><span
-                                    class="hide-menu">APBD</span></a>
-                        </li>
-                        <li class="text-center p-40 upgrade-btn">
-                            <a class="btn d-block w-100 btn-danger text-white" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                                                         document.getElementById('logout-form').submit();"><i class="mdi mdi-logout m-r-5 m-l-5"></i>
-                                Logout</a>
-                        </li>
-                        @endauth
-                    </ul>
-
-                </nav>
-                <!-- End Sidebar navigation -->
-            </div>
+            <x-sidebar/>
             <!-- End Sidebar scroll-->
         </aside>
         <div class="page-wrapper">

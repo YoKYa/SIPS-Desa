@@ -18,6 +18,10 @@ class SuratController extends Controller
         $skpp = auth()->user()->suratskpp()->where('status', 'Diterima')->get();
         return view('surat.masuk.index', compact('sktm','skd','skpp'));
     }
+    public function pengajuan()
+    {
+        return view('surat.pengajuan');
+    }
     public function riwayatsurat()
     {
         $sktm = auth()->user()->suratsktm;
@@ -141,6 +145,15 @@ class SuratController extends Controller
             return view('surat.sktm.skshow', compact('sktm'));
         }
     }
+    public function skshowsktmsearch(Request $request)
+    {
+        if (auth()->user()->status == 'User') {
+            return Redirect()->to(Route('home'));
+        }else{
+            $sktm = SuratSktm::orderBy('id', 'desc')->where('status', '!=' , 'Ajukan')->where('name','LIKE','%'.$request->search.'%')->get();
+            return view('surat.sktm.skshow', compact('sktm'));
+        }
+    }
     public function sktmshow(SuratSktm $id)
     {
         $data = $id;
@@ -187,6 +200,15 @@ class SuratController extends Controller
             return view('surat.skd.skshow', compact('skd'));
         }
     }
+    public function skshowskdsearch(Request $request)
+    {
+        if (auth()->user()->status == 'User') {
+            return Redirect()->to(Route('home'));
+        }else{
+            $skd = SuratSkd::orderBy('id', 'desc')->where('status', '!=' , 'Ajukan')->where('name','LIKE','%'.$request->search.'%')->get();
+            return view('surat.skd.skshow', compact('skd'));
+        }
+    }
     public function skdshow(SuratSkd $id)
     {
         $data = $id;
@@ -230,6 +252,15 @@ class SuratController extends Controller
             return Redirect()->to(Route('home'));
         }else{
             $skpp = SuratSkp::orderBy('id', 'desc')->where('status', '!=' , 'Ajukan')->get();
+            return view('surat.skpp.skshow', compact('skpp'));
+        }
+    }
+    public function skshowskppsearch(Request $request)
+    {
+        if (auth()->user()->status == 'User') {
+            return Redirect()->to(Route('home'));
+        }else{
+            $skpp = SuratSkp::orderBy('id', 'desc')->where('status', '!=' , 'Ajukan')->where('name','LIKE','%'.$request->search.'%')->get();
             return view('surat.skpp.skshow', compact('skpp'));
         }
     }

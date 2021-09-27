@@ -4,6 +4,14 @@
 <div class="col-12">
     <div class="card">
         <div class="card-body">
+            <form class="w-100 me-3" method="POST" action="{{ Route('surat.keluar.sktm') }}">
+                @csrf
+                <input type="search" name="search" class="form-control" placeholder="Search..." aria-label="Search">
+                <small>Enter untuk mencari</small>
+            </form> 
+
+        </div>
+        <div class="card-body">
             <h4 class="card-title">Surat Keterangan Tidak Mampu</h4>
             <h6 class="card-subtitle">Daftar Surat-surat Keluar</h6>
         </div>
@@ -22,9 +30,9 @@
                     @if ($sktm->count() == 0)
                     <tr>
                         <td>
-                           
+
                             <div>Maaf Data Tidak Ada</div>
-                            
+
                         </td>
                     </tr>
                     @endif

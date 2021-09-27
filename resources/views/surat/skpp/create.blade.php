@@ -12,8 +12,7 @@
                     </div>
                     @endif
                     <div class="m-1 d-flex">
-                        @include('layouts.sidebar')
-                        <div class="m-1 rounded shadow-sm col-md-9">
+                        <div class="m-1  col-md-12">
                             <div class="mt-3 text-center">
                                 <h3>Sistem Informasi Pembuatan Surat <br> Desa Sanggrahan</h3>
                                 <hr>
@@ -181,7 +180,7 @@
                                     </div> --}}
                                     <div class="m-2 d-flex">
                                         <button type="submit" class="m-2 btn btn-primary">Submit</button>
-                                        <a href="{{ Route('home') }}" class="m-2 btn btn-danger">Kembali</a>
+                                        <a href="{{ Route('home') }}" class="m-2 btn btn-danger text-white">Kembali</a>
                                     </div>
                                 </form>
                             </div>
