@@ -3,6 +3,10 @@
         {{-- Sidebar Navigation --}}
         <nav class="sidebar-nav">
             <ul id="sidebarnav" class="in">
+                <li class="sidebar-item @if(Request::is('/')) selected @endif">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link @if(Request::is('/')) active @endif"
+                        href="{{ Route('home') }}" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
+                            class="hide-menu">Dashboard</span></a></li>
                 @guest
                 <li class="sidebar-item @if(Request::is('/login')) selected @endif">
                     <a class="sidebar-link waves-effect waves-dark sidebar-link active" href="{{ Route('login') }}"
@@ -12,12 +16,13 @@
                         aria-expanded="false"><i class="mdi mdi-login-variant"></i><span
                             class="hide-menu">Register</span></a></li>
                 @endguest
-                @auth
-                <li class="sidebar-item @if(Request::is('/')) selected @endif">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link @if(Request::is('/')) active @endif"
-                        href="{{ Route('home') }}" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
-                            class="hide-menu">Dashboard</span></a></li>
 
+                @auth
+                <li class="sidebar-item @if(Request::is('surat/pengajuan')) selected @endif">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link @if(Request::is('surat/pengajuan')) active @endif"
+                        href="{{ Route('surat.pengajuan') }}" aria-expanded="false"><i
+                            class="mdi mdi-contact-mail"></i><span class="hide-menu">Pengajuan Surat</span></a>
+                </li>
                 @if (auth()->user()->status == 'Admin')
                 <li class="sidebar-item @if(Request::is('surat')) selected @endif">
                     <a class="sidebar-link waves-effect waves-dark sidebar-link @if(Request::is('surat')) active @endif"
@@ -27,7 +32,7 @@
                         <i class="mdi mdi-email-alert text-danger" style="font-size: 25px"></i>
                         @endif
                         <span class="hide-menu">Pemesanan Surat</span>
-                        
+
                     </a>
                 </li>
                 <li class="sidebar-item @if(Request::is('surat/sk')) selected @endif">
@@ -36,11 +41,7 @@
                             class="hide-menu">Surat Keluar</span></a>
                 </li>
                 @else
-                <li class="sidebar-item @if(Request::is('surat/pengajuan')) selected @endif">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link @if(Request::is('surat/pengajuan')) active @endif"
-                        href="{{ Route('surat.pengajuan') }}" aria-expanded="false"><i
-                            class="mdi mdi-contact-mail"></i><span class="hide-menu">Pengajuan Surat</span></a>
-                </li>
+
                 <li class="sidebar-item @if(Request::is('surat/masuk')) selected @endif">
                     <a class="sidebar-link waves-effect waves-dark sidebar-link @if(Request::is('surat.masuk')) active @endif"
                         href="{{ Route('surat.masuk') }}" aria-expanded="false"><i class="mdi mdi-email"></i><span

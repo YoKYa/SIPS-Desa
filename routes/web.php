@@ -1,22 +1,17 @@
 <?php
 
-use App\Http\Controllers\APBDController;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\SuratController;
+use Illuminate\Support\Facades\{Auth, Route};
+use App\Http\Controllers\{APBDController, HomeController, SuratController, CetakController};
 
-// Auth::routes(['register'=>false]);
 Auth::routes();
+// Home
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::middleware(['auth'])->group(function () {
-    // Home
-    Route::get('/', [HomeController::class, 'index'])->name('home');
-
     // Surat
     Route::prefix('surat')->group(function () {
         Route::get('masuk', [SuratController::class, 'suratmasuk'])->name('surat.masuk');
         Route::get('riwayat', [SuratController::class, 'riwayatsurat'])->name('riwayat.surat');
-        Route::get('pengajuan',[SuratController::class, 'pengajuan'])->name('surat.pengajuan');
+        Route::get('pengajuan', [SuratController::class, 'pengajuan'])->name('surat.pengajuan');
         // SKTM
         Route::get('/sktm/create', [SuratController::class, 'sktm'])->name('create.surat.sktm');
         Route::post('/sktm/create', [SuratController::class, 'store']);
@@ -62,11 +57,16 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/skpp/show/{id}/nacc', [SuratController::class, 'storeskppnacc'])->name('skpp.nacc');
     });
     // APBD
-    Route::prefix('apbd')->group(function()
-    {
+    Route::prefix('apbd')->group(function () {
         Route::get('/', [APBDController::class, 'index'])->name('apbd');
         Route::post('/', [APBDController::class, 'apbd']);
         Route::post('/add', [APBDController::class, 'add'])->name('tambahapbd');
         Route::delete('/del', [APBDController::class, 'delete'])->name('apbd.del');
+    });
+    // Cetak nih
+    Route::prefix('cetak')->group(function () {
+        Route::get('sktm/{id}', [CetakController::class, 'sktm'])->name('cetak.sktm');
+        Route::get('skd/{id}', [CetakController::class, 'skd'])->name('cetak.skd');
+        Route::get('skpp/{id}', [CetakController::class, 'skpp'])->name('cetak.skpp');
     });
 });
