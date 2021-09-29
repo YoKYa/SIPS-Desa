@@ -18,7 +18,7 @@
     <div class="card-body"> 
         <div class="d-flex flex-column">
             <div class="">
-                <a href="{{ Route('cetak.skpp', $data->id) }}"><b>Download / Cetak Surat</b></a>
+                <a href="{{ Route('cetak.skpp', $data->id) }}" target="_blank"><b>Download / Cetak Surat</b></a>
             </div>
             <hr>
             <div>

@@ -19,13 +19,15 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @if ($skd->count() == 0)
                     <tr>
                         <td>
-                            @if ($skd->count() == 0)
+                            
                             <div>Maaf Data Tidak Ada</div>
-                            @endif
+                            
                         </td>
                     </tr>
+                    @endif
                     @foreach ($skd as $item)
                     <tr>
                         <th scope="row">{{ $item->user->name }}</th>

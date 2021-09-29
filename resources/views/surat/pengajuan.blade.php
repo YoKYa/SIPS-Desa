@@ -73,15 +73,15 @@
                                                     @if (auth()->user()->latestsktm->status == "Ajukan")
                                                     <div class="btn btn-secondary font-weight-bold">Sedang di Ajukan
                                                     </div>
-                                                    <a href="{{ Route('create.surat.sktm') }}"
-                                                        class="btn btn-success font-weight-bold">Lihat Surat</a>
+                                                    <a href="{{ Route('cetak.sktm', auth()->user()->latestsktm->id) }}" target="_blank"
+                                                        class="btn btn-success font-weight-bold text-white">Lihat Surat</a>
                                                     <form
                                                         action="{{ Route('delete.surat.sktm', auth()->user()->latestsktm->id) }}"
                                                         method="post">
                                                         @csrf
                                                         @method('delete')
                                                         <button type="submit"
-                                                            class="btn btn-danger font-weight-bold">Hapus Surat yang
+                                                            class="btn btn-danger font-weight-bold text-white">Hapus Surat yang
                                                             diajukan</button>
                                                     </form>
                                                     @else
@@ -139,15 +139,15 @@
                                                     @if (auth()->user()->latestskd->status == "Ajukan")
                                                     <div class="btn btn-secondary font-weight-bold">Sedang di Ajukan
                                                     </div>
-                                                    <a href="{{ Route('create.surat.skd') }}"
-                                                        class="btn btn-success font-weight-bold">Lihat Surat</a>
+                                                    <a href="{{ Route('cetak.skd', auth()->user()->latestskd->id) }}" target="_blank"
+                                                        class="btn btn-success font-weight-bold text-white">Lihat Surat</a>
                                                     <form
                                                         action="{{ Route('delete.surat.skd', auth()->user()->latestskd->id) }}"
                                                         method="post">
                                                         @csrf
                                                         @method('delete')
                                                         <button type="submit"
-                                                            class="btn btn-danger font-weight-bold">Hapus Surat yang
+                                                            class="btn btn-danger font-weight-bold text-white">Hapus Surat yang
                                                             diajukan</button>
                                                     </form>
                                                     @else
@@ -208,15 +208,15 @@
                                                     @if (auth()->user()->latestskpp->status == "Ajukan")
                                                     <div class="btn btn-secondary font-weight-bold">Sedang di Ajukan
                                                     </div>
-                                                    <a href="{{ Route('create.surat.skpp') }}"
-                                                        class="btn btn-success font-weight-bold">Lihat Surat</a>
+                                                    <a href="{{ Route('cetak.skpp', auth()->user()->latestskpp->id) }}" target="_blank"
+                                                        class="btn btn-success font-weight-bold text-white">Lihat Surat</a>
                                                     <form
                                                         action="{{ Route('delete.surat.skpp', auth()->user()->latestskpp->id) }}"
                                                         method="post">
                                                         @csrf
                                                         @method('delete')
                                                         <button type="submit"
-                                                            class="btn btn-danger font-weight-bold">Hapus Surat yang
+                                                            class="btn btn-danger font-weight-bold text-white">Hapus Surat yang
                                                             diajukan</button>
                                                     </form>
                                                     @else

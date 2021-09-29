@@ -15,10 +15,10 @@ class CetakController extends Controller
     }
     public function skd(SuratSkd $id)
     {
-        dd($id);
+        return view('surat.skd.cetak', compact('id'));
     }
     public function skpp(SuratSkp $id)
     {
-        dd($id);
+        return view('surat.skpp.cetak', compact('id'));
     }
 }
