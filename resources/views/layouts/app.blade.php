@@ -19,6 +19,11 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     {{-- Style --}}
     <link rel="stylesheet" href="{{ asset('dist/css/style.min.css') }}">
+    <style>
+        .bg-content{
+            background-image: url({{ asset('assets/images/bg.png') }});
+        }
+    </style>
 </head>
 
 <body>
@@ -36,8 +41,8 @@
         <div class="page-wrapper">
             <div class="page-breadcrumb">
                 <div class="row align-items-center">
-                    <div class="col-12">
-                        <h1 class="mb-0 fw-bold">@yield('title')</h1>
+                    <div class="col-12 ">
+                        <h1 class="mb-0 fw-bold p-2 px-4 text-white" style="border-radius: 5px; background-color: rgb(56, 149, 255)">@yield('title')</h1>
                     </div>
                 </div>
             </div>
@@ -51,7 +56,7 @@
                 {{ session('success') }}
             </div>
             @endif
-            <div class="container-fluid">
+            <div class="container-fluid bg-content">
                 @yield('content')
             </div>
         </div>
@@ -68,61 +73,3 @@
 
 </html>
 
-
-{{-- 
-        <nav class="bg-white shadow-sm navbar navbar-expand-md navbar-light">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-<img src="{{ asset('assets/img/logo/logo.png') }}" alt="" height="30" class="mx-2">
-{{ config('app.name', 'Laravel') }}
-</a>
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-    <span class="navbar-toggler-icon"></span>
-</button>
-
-<div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <!-- Left Side Of Navbar -->
-    <ul class="mr-auto navbar-nav">
-
-    </ul>
-
-    <!-- Right Side Of Navbar -->
-    <ul class="ml-auto navbar-nav">
-        <!-- Authentication Links -->
-        @guest
-        @if (Route::has('login'))
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-        </li>
-        @endif
-
-        @if (Route::has('register'))
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-        </li>
-        @endif
-        @else
-        <li class="nav-item dropdown">
-            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false" v-pre>
-                {{ Auth::user()->name }}
-            </a>
-
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
-                </a>
-
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
-            </div>
-        </li>
-        @endguest
-    </ul>
-</div>
-</div>
-</nav>
---}}

@@ -17,9 +17,11 @@
                     class="ti-menu ti-close"></i></a>
         </div>
         <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
-            <ul class="navbar-nav float-start me-auto">
-                <li class="nav-item search-box"> <a class="nav-link waves-effect waves-dark"
-                        href="javascript:void(0)">SISTEM INFORMASI PEMBUATAN SURAT DESA SANGGRAHAN</a>
+            <ul class="navbar-nav float-none me-auto">
+                <li class="nav-item"> 
+                    <a class="nav-link d-flex" style="color: black; align-content: center"
+                        href="javascript:void(0)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SISTEM INFORMASI PEMBUATAN SURAT DESA SANGGRAHAN
+                    </a>
                 </li>
             </ul>
             <ul class="navbar-nav float-end">

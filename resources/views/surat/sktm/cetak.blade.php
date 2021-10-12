@@ -86,7 +86,7 @@ $tabel->printRow();
 $tabel->endTable();
 $pdf->SetFont('Arial','',11);
 $pdf->MultiCell(0,5, "Nama tersebut diatas adalah benar warga Desa Sanggrahan, Kecamatan Gondang, Kabupaten Nganjuk. Berdasarkan keterangan yang ada pada kami benar bahwa yang bersangkutan tergolong keluarga yang tidak mampu.");
-$pdf->MultiCell(0,5, "Surat Keterangan ini dibuat untuk ___________");
+$pdf->MultiCell(0,5, "Surat Keterangan ini dibuat untuk ". $id->keterangan);
 $pdf->Cell(0,5,'',0,5,'C');
 $pdf->MultiCell(0,5, "Demikian surat keterangan ini dibuat, atas perhatian dan kerjasamanya kami ucapkan terima kasih.");
 $pdf->Cell(0,10,'',0,5,'C');
